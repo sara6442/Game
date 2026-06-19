@@ -39,5 +39,16 @@ const CATALOG = {
   ]
 };
 
-/* Hair colors the player can pick from when a hairstyle is recolorable */
-const HAIR_COLORS = ["#7a5230", "#2b2b2b", "#d6a44a", "#b5483a", "#7b5cb8", "#3aa6a0", "#e88fb0"];
+/* Hair colors the player can pick from when a hairstyle is recolorable.
+   Each one is a CSS filter applied straight to the <img>, so recoloring
+   works with plain <img> tags (no fetch, no server needed, works from a
+   double-clicked file or any host). */
+const HAIR_COLORS = [
+  { name: "Brown",  filter: "none" },
+  { name: "Black",  filter: "brightness(0.32) saturate(0.6)" },
+  { name: "Blonde", filter: "sepia(1) saturate(2.2) brightness(1.35) hue-rotate(-10deg)" },
+  { name: "Red",    filter: "sepia(1) saturate(4) brightness(0.95) hue-rotate(-30deg)" },
+  { name: "Purple", filter: "sepia(1) saturate(3.5) brightness(0.85) hue-rotate(220deg)" },
+  { name: "Teal",   filter: "sepia(1) saturate(3.5) brightness(0.8) hue-rotate(150deg)" },
+  { name: "Pink",   filter: "sepia(1) saturate(2.5) brightness(1.15) hue-rotate(280deg)" }
+];
