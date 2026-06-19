@@ -1,64 +1,80 @@
-// THE DATA - You will replace the 'svg' strings with your actual drawn clothes
-const itemsData = {
-    tops: [
-        { id: 't1', name: 'White Top', layer: 'top-layer', svg: '<rect x="90" y="180" width="120" height="120" fill="white" rx="10"/>' },
-        { id: 't2', name: 'Red Top', layer: 'top-layer', svg: '<rect x="90" y="180" width="120" height="120" fill="red" rx="10"/>' }
-    ],
-    bottoms: [
-        { id: 'b1', name: 'Grey Skirt', layer: 'bottom-layer', svg: '<path d="M100 300 L200 300 L220 600 L80 600 Z" fill="#e0e0e0"/>' }
-    ],
-    dresses: [
-        { id: 'd1', name: 'Blue Dress', layer: 'bottom-layer', svg: '<path d="M80 180 L220 180 L230 600 L70 600 Z" fill="blue"/>' }
-    ],
-    hair: [
-        { id: 'h1', name: 'Bun', layer: 'hair-front', svg: '<circle cx="150" cy="100" r="40" fill="brown"/>' }
-    ],
-    accessories: [
-        { id: 'a1', name: 'Crown', layer: 'accessory-layer', svg: '<path d="M120 100 L130 70 L150 90 L170 70 L180 100 Z" fill="gold"/>' }
-    ]
+// Simple lists of asset paths
+const tops = [
+  "assets/tops/top1.png",
+  "assets/tops/top2.png"
+];
+
+const bottoms = [
+  "assets/skirts/skirt1.png",
+  "assets/skirts/skirt2.png"
+];
+
+const dresses = [
+  "assets/dresses/dress1.png",
+  "assets/dresses/dress2.png"
+];
+
+const hairs = [
+  "assets/hair/hair1.png",
+  "assets/hair/hair2.png"
+];
+
+const accessories = [
+  "assets/accessories/necklace1.png",
+  "assets/accessories/hat1.png"
+];
+
+const backgrounds = [
+  "assets/backgrounds/bg1.png",
+  "assets/backgrounds/bg2.png"
+];
+
+function createGrid(gridId, items, onClick) {
+  const grid = document.getElementById(gridId);
+  items.forEach(src => {
+    const div = document.createElement("div");
+    div.className = "grid-item";
+    const img = document.createElement("img");
+    img.src = src;
+    div.appendChild(img);
+    div.addEventListener("click", () => onClick(src));
+    grid.appendChild(div);
+  });
+}
+
+window.onload = () => {
+  // Tops
+  createGrid("tops-grid", tops, src => {
+    document.getElementById("top").src = src;
+    // If a dress is chosen, clear it
+    document.getElementById("dress").src = "";
+  });
+
+  // Bottoms
+  createGrid("bottoms-grid", bottoms, src => {
+    document.getElementById("bottom").src = src;
+    document.getElementById("dress").src = "";
+  });
+
+  // Dresses (usually replace top+bottom)
+  createGrid("dresses-grid", dresses, src => {
+    document.getElementById("dress").src = src;
+    document.getElementById("top").src = "";
+    document.getElementById("bottom").src = "";
+  });
+
+  // Hair
+  createGrid("hair-grid", hairs, src => {
+    document.getElementById("hair").src = src;
+  });
+
+  // Accessories
+  createGrid("accessories-grid", accessories, src => {
+    document.getElementById("accessory").src = src;
+  });
+
+  // Backgrounds
+  createGrid("backgrounds-grid", backgrounds, src => {
+    document.getElementById("background").src = src;
+  });
 };
-
-let currentCategory = 'tops';
-let activeLayer = null; // Stores which layer is currently active for color changing
-
-function switchCategory(category) {
-    currentCategory = category;
-    // Update active tab
-    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-
-    // Clear and populate grid
-    const grid = document.getElementById('item-grid');
-    grid.innerHTML = '';
-    
-    itemsData[category].forEach(item => {
-        const box = document.createElement('div');
-        box.className = 'item-box';
-        box.innerHTML = item.svg;
-        box.onclick = () => wearItem(item);
-        grid.appendChild(box);
-    });
-}
-
-function wearItem(item) {
-    const layer = document.getElementById(item.layer);
-    layer.innerHTML = item.svg;
-    activeLayer = layer; // Remember which layer we just changed
-}
-
-// Handle Color Changing
-document.getElementById('colorPicker').addEventListener('input', function(e) {
-    if(activeLayer) {
-        // This simple example changes the FIRST element's fill color.
-        // For complex SVGs, you would need to give specific IDs to the shapes you want to recolor.
-        const svgElements = activeLayer.querySelectorAll('*');
-        svgElements.forEach(el => {
-            if(el.getAttribute('fill')) {
-                el.setAttribute('fill', e.target.value);
-            }
-        });
-    }
-});
-
-// Load default category
-switchCategory('tops');
