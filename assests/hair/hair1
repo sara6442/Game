@@ -1,0 +1,14 @@
+<svg viewBox="0 0 261 618" xmlns="http://www.w3.org/2000/svg">
+  <!-- Long hair built from 3 simple shapes (bangs + 2 side locks) so the
+       face and shoulders stay visible in between -->
+  <g class="hairFill" fill="#7a5230" stroke="#3c2a18" stroke-width="2" stroke-linejoin="round">
+    <path d="M95 52 C 95 26 110 10 130 10 C 150 10 165 26 165 52
+             C 158 39 145 32 130 32 C 115 32 102 39 95 52 Z"/>
+    <path d="M95 52 C 80 62 70 82 66 112 C 60 162 56 222 54 282
+             L 50 305 L 60 305 C 63 245 67 185 73 132
+             C 77 96 85 70 99 58 Z"/>
+    <path d="M165 52 C 180 62 190 82 194 112 C 200 162 204 222 206 282
+             L 210 305 L 200 305 C 197 245 193 185 187 132
+             C 183 96 175 70 161 58 Z"/>
+  </g>
+</svg>
