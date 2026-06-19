@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Closet Friend — Dress Up</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <h1>🧷 Closet Friend</h1>
+    <div class="topbar-actions">
+      <button id="randomizeBtn" class="pill-btn">🎲 Surprise me</button>
+      <button id="resetBtn" class="pill-btn ghost">↺ Start over</button>
+    </div>
+  </header>
+
+  <main class="stage-area">
+    <div class="closet-frame">
+      <div id="doll" class="doll">
+        <!-- layers are injected here by script.js, in z-order -->
+      </div>
+    </div>
+
+    <div id="hairColorRow" class="hair-color-row hidden">
+      <span class="hair-color-label">Hair color:</span>
+      <div id="hairSwatches" class="swatches"></div>
+    </div>
+  </main>
+
+  <nav class="category-tabs" id="categoryTabs">
+    <!-- filled by script.js -->
+  </nav>
+
+  <section class="item-grid" id="itemGrid">
+    <!-- filled by script.js -->
+  </section>
+
+  <script src="assets/catalog.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
