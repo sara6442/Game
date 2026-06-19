@@ -1,0 +1,25 @@
+<svg viewBox="0 0 261 618" xmlns="http://www.w3.org/2000/svg">
+  <!-- One-piece dress with a side slit: the slit polygon cuts back to skin tone
+       so the leg shows through, instead of the dress laying a flat layer over it -->
+  <path class="itemFill" fill="#F4C95D" stroke="#3c2a18" stroke-width="2" stroke-linejoin="round"
+    d="M95 122
+       L 113 112
+       L 130 138
+       L 147 112
+       L 165 122
+       L 182 145
+       L 178 160
+       L 170 150
+       L 200 470
+       L 130 490
+       L 130 300
+       L 130 490
+       L 60 470
+       L 92 150
+       L 84 160
+       L 80 145
+       Z"/>
+  <!-- skin-tone slit wedge restores the leg under the hem -->
+  <path fill="#FCE3D8" stroke="#3c2a18" stroke-width="2" stroke-linejoin="round"
+    d="M118 340 L 142 340 L 138 475 L 122 475 Z"/>
+</svg>
