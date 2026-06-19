@@ -1,9 +1,12 @@
 /* script.js — dress-up game logic
    Builds the category tabs + item grid from CATALOG (see assets/catalog.js)
    and stacks the chosen pieces on top of the body in fixed z-order, so a
-   players can never end up with an undressed view: the body PNG underneath
+   player can never end up with an undressed view: the body image underneath
    is already modestly dressed, and every clothing layer fully covers the
    regions it owns.
+
+   All layers are plain <img> tags (no fetch()), so this works straight from
+   a double-clicked index.html, a local server, or GitHub Pages alike.
 */
 
 const ASSET_BASE = "assets/";
@@ -29,7 +32,7 @@ let selection = {
   bottom: "bottom1",
   dress: null,
   accessory: null,
-  hairColor: HAIR_COLORS[0]
+  hairColorIndex: 0
 };
 
 function findItem(catalogKey, id){
@@ -71,36 +74,14 @@ function renderDoll(){
   const a = findItem("accessories", selection.accessory);
   if(a) layers.push({ file: a.file, z: a.layer });
 
-  layers.sort((x,y) => x.z - y.z);
-
-  // Stacking is driven by explicit z-index (not DOM order), because SVG
-  // layers load asynchronously via fetch() and could otherwise land in the
-  // wrong order relative to the synchronously-added <img> layers.
   layers.forEach(layer => {
-    if(layer.file.endsWith(".svg")){
-      fetch(ASSET_BASE + layer.file)
-        .then(r => r.text())
-        .then(svgText => {
-          const wrapper = document.createElement("div");
-          wrapper.innerHTML = svgText;
-          const svg = wrapper.firstElementChild;
-          svg.style.position = "absolute";
-          svg.style.top = "0";
-          svg.style.left = "0";
-          svg.style.width = "100%";
-          svg.style.height = "100%";
-          svg.style.zIndex = layer.z;
-          if(layer.recolor){
-            svg.querySelectorAll(".hairFill").forEach(p => p.setAttribute("fill", selection.hairColor));
-          }
-          doll.appendChild(svg);
-        });
-    } else {
-      const img = document.createElement("img");
-      img.src = ASSET_BASE + layer.file;
-      img.style.zIndex = layer.z;
-      doll.appendChild(img);
+    const img = document.createElement("img");
+    img.src = ASSET_BASE + layer.file;
+    img.style.zIndex = layer.z;
+    if(layer.recolor){
+      img.style.filter = HAIR_COLORS[selection.hairColorIndex].filter;
     }
+    doll.appendChild(img);
   });
 
   document.getElementById("hairColorRow").classList.toggle("hidden", !h || !h.recolorable);
@@ -111,13 +92,14 @@ function renderDoll(){
 function renderHairSwatches(){
   const row = document.getElementById("hairSwatches");
   row.innerHTML = "";
-  HAIR_COLORS.forEach(color => {
+  HAIR_COLORS.forEach((c, i) => {
     const b = document.createElement("button");
-    b.className = "swatch-btn" + (color === selection.hairColor ? " selected" : "");
-    b.style.background = color;
-    b.title = "Hair color";
+    b.className = "swatch-btn" + (i === selection.hairColorIndex ? " selected" : "");
+    b.style.background = "#7a5230";
+    b.style.filter = c.filter;
+    b.title = c.name;
     b.addEventListener("click", () => {
-      selection.hairColor = color;
+      selection.hairColorIndex = i;
       renderHairSwatches();
       renderDoll();
     });
@@ -190,7 +172,7 @@ function randomize(){
     selection[cat.key] = pick;
   });
   if(selection.dress){ selection.top = null; selection.bottom = null; }
-  selection.hairColor = HAIR_COLORS[Math.floor(Math.random() * HAIR_COLORS.length)];
+  selection.hairColorIndex = Math.floor(Math.random() * HAIR_COLORS.length);
   renderTabs();
   renderGrid();
   renderHairSwatches();
@@ -205,7 +187,7 @@ function resetAll(){
     bottom: "bottom1",
     dress: null,
     accessory: null,
-    hairColor: HAIR_COLORS[0]
+    hairColorIndex: 0
   };
   renderTabs();
   renderGrid();
