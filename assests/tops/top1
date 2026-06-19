@@ -1,0 +1,18 @@
+<svg viewBox="0 0 261 618" xmlns="http://www.w3.org/2000/svg">
+  <!-- V-neck blouse: stops above the collarbone so the neck/V stays visible -->
+  <path class="itemFill" fill="#F7B8C4" stroke="#3c2a18" stroke-width="2" stroke-linejoin="round"
+    d="M95 122
+       L 113 112
+       L 130 138
+       L 147 112
+       L 165 122
+       L 182 145
+       L 178 160
+       L 170 150
+       L 172 220
+       L 90 220
+       L 92 150
+       L 84 160
+       L 80 145
+       Z"/>
+</svg>
