@@ -20,22 +20,22 @@
 
 const CATALOG = {
   backgrounds: [
-    { id: "bg1", name: "Cozy Room", file: "backgrounds/background1.svg", layer: 0, swatch: "#FFF3E0" }
+    { id: "bg1", name: "Cozy Room", file: "backgrounds/background1", layer: 0, swatch: "#FFF3E0" }
   ],
   tops: [
-    { id: "top1", name: "Pink Blouse", file: "tops/top1.svg", layer: 30, swatch: "#F7B8C4" }
+    { id: "top1", name: "Pink Blouse", file: "tops/top1", layer: 30, swatch: "#F7B8C4" }
   ],
   bottoms: [
-    { id: "bottom1", name: "Lilac Skirt", file: "bottoms/bottom1.svg", layer: 20, swatch: "#C9B6E4" }
+    { id: "bottom1", name: "Lilac Skirt", file: "bottoms/bottom1", layer: 20, swatch: "#C9B6E4" }
   ],
   dresses: [
-    { id: "dress1", name: "Sunshine Dress", file: "dresses/dress1.svg", layer: 25, swatch: "#F4C95D" }
+    { id: "dress1", name: "Sunshine Dress", file: "dresses/dress1", layer: 25, swatch: "#F4C95D" }
   ],
   hair: [
-    { id: "hair1", name: "Long Waves", file: "hair/hair1.svg", layer: 40, swatch: "#7a5230", recolorable: true }
+    { id: "hair1", name: "Long Waves", file: "hair/hair1", layer: 40, swatch: "#7a5230", recolorable: true }
   ],
   accessories: [
-    { id: "accessory1", name: "Hair Bow", file: "accessories/accessory1.svg", layer: 50, swatch: "#F7B8C4" }
+    { id: "accessory1", name: "Hair Bow", file: "accessories/accessory1", layer: 50, swatch: "#F7B8C4" }
   ]
 };
 
