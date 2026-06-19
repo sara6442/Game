@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Princess Dress-Up Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="game-container">
+        <!-- The Model -->
+        <div class="canvas-area">
+            <svg id="dollCanvas" viewBox="0 0 300 700" xmlns="http://www.w3.org/2000/svg">
+                <!-- 1. Background -->
+                <rect id="bg-color" width="300" height="700" fill="#ffffff" />
+                
+                <!-- 2. Hair (Back layer) -->
+                <g id="hair-back"></g>
+
+                <!-- 3. Skirts / Bottoms (Behind legs) -->
+                <g id="bottom-layer"></g>
+
+                <!-- 4. The Body (Base) -->
+                <g id="body-layer">
+                    <!-- Image placeholder for body -->
+                    <image href="body.svg" width="300" height="700" />
+                </g>
+
+                <!-- 5. Tops / Shirts (Above body) -->
+                <g id="top-layer"></g>
+
+                <!-- 6. Hair (Front layer) -->
+                <g id="hair-front"></g>
+
+                <!-- 7. Accessories -->
+                <g id="accessory-layer"></g>
+            </svg>
+        </div>
+
+        <!-- The Controls -->
+        <div class="control-panel">
+            <div class="category-tabs">
+                <button class="tab-btn active" onclick="switchCategory('tops')">Tops</button>
+                <button class="tab-btn" onclick="switchCategory('bottoms')">Skirts</button>
+                <button class="tab-btn" onclick="switchCategory('dresses')">Dresses</button>
+                <button class="tab-btn" onclick="switchCategory('hair')">Hair</button>
+                <button class="tab-btn" onclick="switchCategory('accessories')">Acc.</button>
+            </div>
+
+            <div id="item-grid" class="item-grid">
+                <!-- Items will appear here via JavaScript -->
+            </div>
+            
+            <div class="color-picker-area">
+                <label>Change Color: <input type="color" id="colorPicker" value="#ffffff"></label>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
