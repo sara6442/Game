@@ -1,0 +1,9 @@
+<svg viewBox="0 0 261 618" xmlns="http://www.w3.org/2000/svg">
+  <!-- A-line skirt: sits at the waist, ends mid-calf, never overlaps the neck -->
+  <path class="itemFill" fill="#C9B6E4" stroke="#3c2a18" stroke-width="2" stroke-linejoin="round"
+    d="M97 213
+       L 164 213
+       L 192 400
+       L 70 400
+       Z"/>
+</svg>
