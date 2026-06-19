@@ -18,26 +18,30 @@
     </div>
   </header>
 
-  <main class="stage-area">
-    <div class="closet-frame">
+  <main class="layout">
+
+    <section class="stage-panel">
       <div id="doll" class="doll">
         <!-- layers are injected here by script.js, in z-order -->
       </div>
-    </div>
 
-    <div id="hairColorRow" class="hair-color-row hidden">
-      <span class="hair-color-label">Hair color:</span>
-      <div id="hairSwatches" class="swatches"></div>
-    </div>
+      <div id="hairColorRow" class="hair-color-row hidden">
+        <span class="hair-color-label">Hair color:</span>
+        <div id="hairSwatches" class="swatches"></div>
+      </div>
+    </section>
+
+    <section class="closet-panel">
+      <nav class="category-tabs" id="categoryTabs">
+        <!-- filled by script.js -->
+      </nav>
+
+      <div class="item-grid" id="itemGrid">
+        <!-- filled by script.js -->
+      </div>
+    </section>
+
   </main>
-
-  <nav class="category-tabs" id="categoryTabs">
-    <!-- filled by script.js -->
-  </nav>
-
-  <section class="item-grid" id="itemGrid">
-    <!-- filled by script.js -->
-  </section>
 
   <script src="assets/catalog.js"></script>
   <script src="script.js"></script>
