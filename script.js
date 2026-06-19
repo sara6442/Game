@@ -9,7 +9,7 @@
    a double-clicked index.html, a local server, or GitHub Pages alike.
 */
 
-const ASSET_BASE = "assets/";
+const ASSET_BASE = "assests/";
 
 const CATEGORIES = [
   { key: "background",  catalogKey: "backgrounds",  label: "Room",       icon: "🏠" },
